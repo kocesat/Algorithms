@@ -5,14 +5,14 @@ import java.util.*;
 public class Maze {
     private boolean directed;
     private Stack<MazeNode> path = new Stack<>();
-    private Stack<MazeNode> fromStack = new Stack<>();
+    private Stack<MazeNode> lastVisited = new Stack<>();
 
     public Maze(boolean directed) {
         this.directed = directed;
     }
 
     public String findPath(MazeNode from, MazeNode to) {
-        fromStack.push(from);
+        lastVisited.push(from);
         List<String> pathStrings = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         if (hasPath(to)) {
@@ -27,10 +27,10 @@ public class Maze {
     }
 
     public boolean hasPath(MazeNode to) {
-        if (fromStack.isEmpty()) {
+        if (lastVisited.isEmpty()) {
             return false;
         }
-        MazeNode current = fromStack.pop();
+        MazeNode current = lastVisited.pop();
         path.push(current);
         current.setVisited(true);
         if (current.equals(to)) {
@@ -38,7 +38,7 @@ public class Maze {
         }
         for (MazeNode neighbor : current.getNeighbors()) {
             if (!neighbor.isVisited()) {
-                fromStack.push(neighbor);
+                lastVisited.push(neighbor);
                 if (hasPath(to)) {
                     return true;
                 }
