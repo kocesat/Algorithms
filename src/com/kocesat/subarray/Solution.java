@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Given an int[] of length N, find the length of the longest subArray
+ * Given an integer array of length N, find the length of the longest subArray
  * such that subArray contains no more than 2 distinct elements and
  * difference of any two elements of the subArray is no more than 1
  * Example: int[] = [1, 1, 2, 3, 4, 4]
