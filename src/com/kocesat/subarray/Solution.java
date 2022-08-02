@@ -22,6 +22,8 @@ public class Solution {
         System.out.println(4 == getLongestSubArrayLength(List.of(11,11,10,10)) ? "Passed" : "Failed");
         System.out.println(11 == getLongestSubArrayLength(List.of(2,1,1,2,2,5,5,5,5,5,5,5,5,5,5,5,3,3,4,4,5,5,6,7,89,10))
                 ? "Passed" : "Failed");
+        System.out.println(30 == getLongestSubArrayLength(List.of(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2))
+                ? "Passed" : "Failed");
     }
 
     public static int getLongestSubArrayLength(List<Integer> arr) {
