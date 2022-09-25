@@ -1,4 +1,4 @@
-package com.kocesat.encryption;
+package com.kocesat.crypto;
 
 public class Encryption {
     public static void main(String[] args) {

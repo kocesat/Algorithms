@@ -1,4 +1,4 @@
-package com.esat.algo.crypto;
+package com.kocesat.crypto;
 
 public class CeaserCipher {
     private static final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz".toCharArray();
