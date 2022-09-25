@@ -23,8 +23,8 @@ public class NumberPicker {
                 int num = a.get(j);
                 if (isEligible(min, max, num)) {
                     counter++;
-                    setNewMin(num, min);
-                    setNewMax(num, max);
+                    min = Math.min(num, min);
+                    max = Math.max(num, max);
                 }
             }
             if (counter > result) {
@@ -36,20 +36,6 @@ public class NumberPicker {
 
     private static boolean isEligible(int min, int max, int num) {
         return Math.abs(min - num) <= 1 && Math.abs(max - num) <= 1;
-    }
-
-    private static int setNewMin(int num, int min) {
-        if (num < min) {
-            min = num;
-        }
-        return min;
-    }
-
-    private static int setNewMax(int num, int max) {
-        if (num > max) {
-            max = num;
-        }
-        return max;
     }
 
 }
