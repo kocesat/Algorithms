@@ -10,8 +10,8 @@ public class BracketPatternGenerator {
   private StringBuilder builder;
 
   public BracketPatternGenerator(int length) {
-    if (isLengthOdd(length)) {
-      throw new IllegalArgumentException("length should be even number");
+    if (isOdd(length)) {
+      throw new IllegalArgumentException("length should be an even number");
     }
     this.length = length;
   }
@@ -81,8 +81,8 @@ public class BracketPatternGenerator {
     builder = new StringBuilder();
   }
 
-  private static boolean isLengthOdd(int length) {
-    return length % 2 == 1;
+  private static boolean isOdd(int number) {
+    return number % 2 == 1;
   }
 
   private int remaining() {
