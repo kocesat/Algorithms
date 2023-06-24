@@ -1,26 +1,14 @@
 package com.kocesat;
 
-import java.util.Scanner;
+import com.kocesat.string.BracketPatternGenerator;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int number;
-        while (true) {
-            System.out.print("Number: ");
-            number = scanner.nextInt();
-            String result = "";
-            if (number % 5 == 0) {
-                result = "Fuzz";
-            }
-            if (number % 3 == 0) {
-                result += "Buzz";
-            }
-            if (number % 5 != 0 && number % 3 != 0) {
-                result = number + "";
-            }
-            System.out.println(result);
-        }
+  public static void main(String[] args) {
+    BracketPatternGenerator bracketPatternGenerator = new BracketPatternGenerator(10);
+    for (int i = 0; i < 10; i++) {
+      String bracketPattern = bracketPatternGenerator.randomGenerate();
+      System.out.println(bracketPattern);
     }
+  }
 }
