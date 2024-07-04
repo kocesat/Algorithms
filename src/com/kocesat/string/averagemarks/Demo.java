@@ -7,14 +7,17 @@ import java.util.regex.Pattern;
 
 public class Demo {
 
+  private static final Pattern PATTERN = Pattern.compile("\\d+");
+
   public static void main(String[] args) {
     List<String> studentMarkStrings = List.of(
         "Micheal Scofield: 9 10 11",
-        "Tony Stark; 5-5-5"
+        "Tony Stark; 5-5-5",
+        "Mark Zuckerber* 10:20:35"
     );
     String actual = solve(studentMarkStrings);
     System.out.println(actual);
-    String expectedResult = "Micheal Scofield-10,Tony Stark-5";
+    String expectedResult = "Micheal Scofield-10,Tony Stark-5,Mark Zuckerber-21";
     System.out.println("Test Passed: " + expectedResult.equals(actual));
   }
 
@@ -36,19 +39,20 @@ public class Demo {
   public static Student getStudent(String str) {
     List<Integer> marks = new ArrayList<>();
     StringBuilder nameBuilder = new StringBuilder();
+
     int firstDigitIndex = 0;
     for (char ch : str.toCharArray()) {
-      if (Character.isLetter(ch) || Character.isSpaceChar(ch)) {
-        nameBuilder.append(ch);
-        firstDigitIndex++;
-        continue;
-      }
       if (Character.isDigit(ch)) {
         break;
       }
+
+      if (Character.isLetter(ch) || Character.isSpaceChar(ch)) {
+        nameBuilder.append(ch);
+        firstDigitIndex++;
+      }
     }
-    Pattern pattern = Pattern.compile("\\d+");
-    Matcher matcher = pattern.matcher(str.substring(firstDigitIndex));
+
+    Matcher matcher = PATTERN.matcher(str.substring(firstDigitIndex));
 
     while (matcher.find()) {
       Integer mark = Integer.valueOf(matcher.group());
@@ -62,7 +66,7 @@ public class Demo {
   }
 
   public static Integer getAverage(List<Integer> marks) {
-    if (marks.size() == 0) {
+    if (marks.isEmpty()) {
       return 0;
     }
     int sum = 0;
